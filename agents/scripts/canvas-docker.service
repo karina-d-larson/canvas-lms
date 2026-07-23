@@ -1,0 +1,22 @@
+[Unit]
+Description=Canvas LMS Docker Compose stack
+Documentation=file:///home/ubuntu/canvas-lms/doc/docker/README.md
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=ubuntu
+Group=docker
+WorkingDirectory=/home/ubuntu/canvas-lms
+Environment=CANVAS_SKIP_DOCKER_USERMOD=1
+# + runs as root: ensure canvas.docker resolves locally
+ExecStartPre=+/bin/bash -c 'grep -q canvas.docker /etc/hosts || echo "127.0.0.1 canvas.docker" >> /etc/hosts'
+ExecStart=/usr/bin/docker compose up -d postgres redis webpack web jobs
+ExecStop=/usr/bin/docker compose stop postgres redis webpack web jobs
+TimeoutStartSec=600
+
+[Install]
+WantedBy=multi-user.target

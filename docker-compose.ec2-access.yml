@@ -1,0 +1,21 @@
+# EC2 / Linux without Dory reverse proxy: publish Canvas web on host port 80.
+# Add to .env: COMPOSE_FILE=docker-compose.yml:docker-compose.override.yml:docker-compose.ec2-access.yml
+version: '2.3'
+services:
+  web:
+    restart: unless-stopped
+    ports:
+      - '80:80'
+    environment:
+      DISABLE_SPRING: '1'
+      PASSENGER_START_TIMEOUT: '300'
+  jobs:
+    restart: unless-stopped
+    environment:
+      DISABLE_SPRING: '1'
+  webpack:
+    restart: unless-stopped
+  postgres:
+    restart: unless-stopped
+  redis:
+    restart: unless-stopped
