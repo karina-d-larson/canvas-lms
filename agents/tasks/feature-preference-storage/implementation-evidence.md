@@ -20,7 +20,8 @@
 | 2026-07-23T04:16:17Z | Evidence commit | `git commit` | **Pass** — `ba21cf329b0` |
 | 2026-07-23 ~04:22Z | Feature branch tip | Local commit | `a7345a40563` (*getting things done*) also on feature branch |
 | 2026-07-23 (human) | Integrate into `dev` | Local `git merge feature/preference-storage-t-ps-01` (fast-forward) then push | **Merged into `dev`** — T-PS-01 commits are ancestors of `origin/dev` |
-| 2026-07-23T04:26:51Z | Complete | GitHub MCP Projects final attempt | **Failed** — `403 Resource not accessible by personal access token` |
+| 2026-07-23T04:26:51Z | Complete | GitHub MCP Projects attempt | **Failed** — `403 Resource not accessible by personal access token` |
+| 2026-07-23T04:28:58Z | Complete | GitHub MCP `projects_list` final attempt | **Failed** — `Resource not accessible by personal access token` |
 
 **Board note:** Intended final transition was `In Progress → Complete`. The board was **not** updated. No project item could be read back with status Complete.
 
@@ -53,7 +54,7 @@
 
 * GitHub MCP `user-github` connected; authenticated user `karina-d-larson`.
 * Projects tools are present (`projects_list`, `projects_get`, `projects_write`).
-* Final Projects API attempt (2026-07-23T04:26:51Z) again returned:  
+* Final Projects API attempt (2026-07-23T04:28:58Z) again returned:  
   **`Resource not accessible by personal access token`**
 * Therefore GitHub Project status was **not** moved to Complete, and no item could be read back with that status.
 * Manual fallback: this evidence file records intended `In Progress → Complete` and repository merge evidence instead.
